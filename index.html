@@ -10,15 +10,15 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #0d0d0d;
-    --bg2: #141414;
-    --bg3: #1a1a1a;
-    --border: rgba(255,255,255,0.07);
-    --border-hover: rgba(255,255,255,0.15);
-    --text: #f0ede6;
-    --muted: #888880;
-    --accent: #c8f564;
-    --accent2: #64f5c8;
+    --bg: #0a0e14;
+    --bg2: #0f1520;
+    --bg3: #141d2b;
+    --border: rgba(100,160,255,0.08);
+    --border-hover: rgba(100,160,255,0.2);
+    --text: #e8edf5;
+    --muted: #6a7a94;
+    --accent: #5b9cf6;
+    --accent2: #93c5fd;
     --font-head: 'Syne', sans-serif;
     --font-mono: 'DM Mono', monospace;
     --font-body: 'Lora', Georgia, serif;
@@ -35,7 +35,6 @@
     overflow-x: hidden;
   }
 
-  /* --- NAV --- */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -44,449 +43,241 @@
     align-items: center;
     justify-content: space-between;
     padding: 1.25rem 3rem;
-    background: rgba(13,13,13,0.85);
+    background: rgba(10,14,20,0.88);
     backdrop-filter: blur(12px);
     border-bottom: 0.5px solid var(--border);
   }
-  .nav-logo {
-    font-family: var(--font-mono);
-    font-size: 13px;
-    color: var(--accent);
-    letter-spacing: 0.08em;
-  }
+  .nav-logo { font-family: var(--font-mono); font-size: 13px; color: var(--accent); letter-spacing: 0.08em; }
   .nav-links { display: flex; gap: 2rem; }
   .nav-links a {
-    font-family: var(--font-head);
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
+    font-family: var(--font-head); font-size: 12px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none; transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--text); }
 
-  /* --- SECTIONS --- */
   section { padding: 7rem 0; }
   .container { max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
 
-  /* --- HERO --- */
   #hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-    padding-top: 5rem;
+    min-height: 100vh; display: flex; align-items: center;
+    position: relative; overflow: hidden; padding-top: 5rem;
   }
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-    width: 100%;
-  }
+  .hero-content { max-width: 680px; }
   .hero-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--accent);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    border: 0.5px solid rgba(200,245,100,0.3);
-    padding: 6px 14px;
-    border-radius: 100px;
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-mono); font-size: 11px; color: var(--accent);
+    letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.5rem;
+    border: 0.5px solid rgba(91,156,246,0.3); padding: 6px 14px; border-radius: 100px;
   }
   .hero-tag::before {
-    content: '';
-    width: 6px; height: 6px;
-    background: var(--accent);
-    border-radius: 50%;
-    animation: blink 1.8s infinite;
+    content: ''; width: 6px; height: 6px; background: var(--accent);
+    border-radius: 50%; animation: blink 1.8s infinite;
   }
   @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
 
   h1 {
-    font-family: var(--font-head);
-    font-size: clamp(3rem, 5vw, 5.5rem);
-    font-weight: 800;
-    line-height: 1.0;
-    letter-spacing: -0.02em;
-    margin-bottom: 1.5rem;
+    font-family: var(--font-head); font-size: clamp(3.5rem, 6vw, 6.5rem);
+    font-weight: 800; line-height: 1.0; letter-spacing: -0.025em; margin-bottom: 1.5rem;
   }
-  h1 em {
-    font-style: normal;
-    color: var(--accent);
-  }
+  h1 em { font-style: normal; color: var(--accent); }
+
   .hero-desc {
-    font-family: var(--font-body);
-    font-size: 17px;
-    color: rgba(240,237,230,0.7);
-    line-height: 1.75;
-    margin-bottom: 2.5rem;
-    max-width: 460px;
+    font-family: var(--font-body); font-size: 18px; color: rgba(232,237,245,0.65);
+    line-height: 1.8; margin-bottom: 1.5rem; max-width: 560px;
+  }
+  .hero-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 2.5rem; }
+  .hero-chip {
+    font-family: var(--font-mono); font-size: 11px; padding: 4px 12px;
+    border-radius: 100px; background: rgba(91,156,246,0.08);
+    border: 0.5px solid rgba(91,156,246,0.2); color: var(--accent2); letter-spacing: 0.04em;
   }
   .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
   .btn-primary {
-    font-family: var(--font-head);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    text-decoration: none;
-    background: var(--accent);
-    color: #0d0d0d;
-    padding: 0.875rem 2rem;
-    border-radius: 4px;
-    transition: opacity 0.2s, transform 0.2s;
-    display: inline-block;
+    font-family: var(--font-head); font-size: 13px; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
+    background: var(--accent); color: #0a0e14; padding: 0.875rem 2rem;
+    border-radius: 4px; transition: opacity 0.2s, transform 0.2s; display: inline-block;
   }
   .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
   .btn-outline {
-    font-family: var(--font-head);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border: 1px solid rgba(255,255,255,0.18);
-    color: var(--text);
-    padding: 0.875rem 2rem;
-    border-radius: 4px;
-    transition: border-color 0.2s, transform 0.2s;
-    display: inline-block;
+    font-family: var(--font-head); font-size: 13px; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.15); color: var(--text);
+    padding: 0.875rem 2rem; border-radius: 4px;
+    transition: border-color 0.2s, transform 0.2s; display: inline-block;
   }
-  .btn-outline:hover { border-color: rgba(255,255,255,0.5); transform: translateY(-1px); }
+  .btn-outline:hover { border-color: rgba(255,255,255,0.45); transform: translateY(-1px); }
 
-  .hero-right {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  .hero-stat-card {
-    background: var(--bg3);
-    border: 0.5px solid var(--border);
-    border-radius: 12px;
-    padding: 1.25rem 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    transition: border-color 0.2s;
-  }
-  .hero-stat-card:hover { border-color: var(--border-hover); }
-  .stat-icon {
-    width: 40px; height: 40px;
-    background: rgba(200,245,100,0.08);
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px;
-    flex-shrink: 0;
-  }
-  .stat-label { font-family: var(--font-mono); font-size: 11px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
-  .stat-value { font-family: var(--font-head); font-size: 15px; font-weight: 700; color: var(--text); margin-top: 2px; }
-
-  /* --- BG DECO --- */
   .bg-deco {
-    position: absolute;
-    top: 10%; right: -10%;
-    width: 600px; height: 600px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(200,245,100,0.04) 0%, transparent 65%);
+    position: absolute; top: 5%; right: -15%; width: 700px; height: 700px;
+    border-radius: 50%; background: radial-gradient(circle, rgba(91,156,246,0.05) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .bg-deco2 {
+    position: absolute; bottom: -10%; left: -10%; width: 500px; height: 500px;
+    border-radius: 50%; background: radial-gradient(circle, rgba(91,156,246,0.03) 0%, transparent 65%);
     pointer-events: none;
   }
 
-  /* --- SECTION HEADINGS --- */
   .section-label {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--accent);
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
+    font-family: var(--font-mono); font-size: 11px; color: var(--accent);
+    letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.75rem;
   }
   h2 {
-    font-family: var(--font-head);
-    font-size: clamp(2rem, 3vw, 3rem);
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    margin-bottom: 0.5rem;
+    font-family: var(--font-head); font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 0.5rem;
   }
-  .section-sub {
-    color: var(--muted);
-    font-size: 16px;
-    max-width: 520px;
-    margin-bottom: 3.5rem;
-  }
+  .section-sub { color: var(--muted); font-size: 16px; max-width: 520px; margin-bottom: 3.5rem; }
 
-  /* --- DIVIDER --- */
   hr.divider { border: none; border-top: 0.5px solid var(--border); margin: 0; }
 
-  /* --- PROJECTS --- */
   .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 1.5rem;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem;
   }
   .project-card {
-    background: var(--bg2);
-    border: 0.5px solid var(--border);
-    border-radius: 16px;
-    padding: 1.75rem;
-    transition: border-color 0.2s, transform 0.2s;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    background: var(--bg2); border: 0.5px solid var(--border); border-radius: 16px;
+    padding: 2rem; transition: border-color 0.2s, transform 0.2s;
+    display: flex; flex-direction: column; gap: 1rem;
   }
   .project-card:hover { border-color: var(--border-hover); transform: translateY(-3px); }
   .project-card.featured {
-    border-color: rgba(200,245,100,0.25);
-    background: linear-gradient(135deg, rgba(200,245,100,0.03) 0%, var(--bg2) 60%);
+    border-color: rgba(91,156,246,0.22);
+    background: linear-gradient(135deg, rgba(91,156,246,0.04) 0%, var(--bg2) 55%);
   }
   .project-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
   .project-icon { font-size: 28px; }
   .project-links { display: flex; gap: 8px; }
   .proj-link {
     display: flex; align-items: center; justify-content: center;
-    width: 32px; height: 32px;
-    border: 0.5px solid var(--border);
-    border-radius: 6px;
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 14px;
+    width: 32px; height: 32px; border: 0.5px solid var(--border);
+    border-radius: 6px; color: var(--muted); text-decoration: none;
     transition: color 0.2s, border-color 0.2s;
   }
   .proj-link:hover { color: var(--text); border-color: var(--border-hover); }
+  .project-subtitle {
+    font-family: var(--font-mono); font-size: 11px; color: var(--accent);
+    letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem;
+  }
   .project-title {
-    font-family: var(--font-head);
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 0.4rem;
+    font-family: var(--font-head); font-size: 19px; font-weight: 700;
+    line-height: 1.2; margin-bottom: 0.6rem;
   }
-  .project-desc { font-size: 14px; color: rgba(240,237,230,0.65); line-height: 1.65; }
-  .tech-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+  .project-desc { font-size: 14px; color: rgba(232,237,245,0.62); line-height: 1.7; }
+  .project-highlights { display: flex; flex-direction: column; gap: 6px; margin-top: 0.25rem; }
+  .highlight-item {
+    display: flex; align-items: flex-start; gap: 8px;
+    font-size: 13px; color: rgba(232,237,245,0.55); line-height: 1.55;
+  }
+  .highlight-item::before {
+    content: '—'; color: var(--accent); font-family: var(--font-mono);
+    font-size: 11px; flex-shrink: 0; margin-top: 2px;
+  }
+  .tech-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 0.5rem; }
   .badge {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    padding: 3px 10px;
-    border-radius: 100px;
-    background: rgba(255,255,255,0.05);
-    border: 0.5px solid var(--border);
-    color: var(--muted);
-    letter-spacing: 0.04em;
+    font-family: var(--font-mono); font-size: 11px; padding: 3px 10px;
+    border-radius: 100px; background: rgba(255,255,255,0.04);
+    border: 0.5px solid var(--border); color: var(--muted); letter-spacing: 0.04em;
   }
-  .badge.accent { background: rgba(200,245,100,0.08); border-color: rgba(200,245,100,0.25); color: var(--accent); }
+  .badge.accent {
+    background: rgba(91,156,246,0.1); border-color: rgba(91,156,246,0.25); color: var(--accent2);
+  }
 
-  /* --- SKILLS --- */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 1rem;
-  }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
   .skill-group {
-    background: var(--bg2);
-    border: 0.5px solid var(--border);
-    border-radius: 12px;
-    padding: 1.25rem;
+    background: var(--bg2); border: 0.5px solid var(--border); border-radius: 12px; padding: 1.25rem;
   }
   .skill-group-title {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--accent);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 0.875rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 0.5px solid var(--border);
+    font-family: var(--font-mono); font-size: 11px; color: var(--accent);
+    letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.875rem;
+    padding-bottom: 0.75rem; border-bottom: 0.5px solid var(--border);
   }
-  .skill-list { display: flex; flex-direction: column; gap: 6px; }
-  .skill-item {
-    display: flex; align-items: center; justify-content: space-between;
-    font-size: 14px;
-    color: rgba(240,237,230,0.8);
-  }
-  .skill-level {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.06em;
-    padding: 2px 8px;
-    border-radius: 100px;
-  }
-  .skill-level.prof { background: rgba(200,245,100,0.1); color: var(--accent); border: 0.5px solid rgba(200,245,100,0.2); }
-  .skill-level.fam { background: rgba(255,255,255,0.04); color: var(--muted); border: 0.5px solid var(--border); }
+  .skill-list { display: flex; flex-direction: column; gap: 7px; }
+  .skill-item { font-size: 14px; color: rgba(232,237,245,0.8); }
 
-  /* --- CERTS --- */
   .certs-list { display: flex; flex-direction: column; gap: 1rem; }
   .cert-card {
-    background: var(--bg2);
-    border: 0.5px solid var(--border);
-    border-radius: 12px;
-    padding: 1.25rem 1.5rem;
-    display: flex;
-    align-items: flex-start;
-    gap: 1.25rem;
+    background: var(--bg2); border: 0.5px solid var(--border); border-radius: 12px;
+    padding: 1.25rem 1.5rem; display: flex; align-items: flex-start; gap: 1.25rem;
     transition: border-color 0.2s;
   }
   .cert-card:hover { border-color: var(--border-hover); }
   .cert-institution {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--accent);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    min-width: 80px;
-    padding-top: 3px;
+    font-family: var(--font-mono); font-size: 11px; color: var(--accent);
+    letter-spacing: 0.08em; text-transform: uppercase; min-width: 80px; padding-top: 3px;
   }
-  .cert-name {
-    font-family: var(--font-head);
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 4px;
-  }
+  .cert-name { font-family: var(--font-head); font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
   .cert-detail { font-size: 13px; color: var(--muted); }
   .cert-link {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--accent2);
-    text-decoration: none;
-    margin-left: auto;
-    align-self: center;
-    flex-shrink: 0;
-    border: 0.5px solid rgba(100,245,200,0.25);
-    padding: 4px 10px;
-    border-radius: 4px;
+    font-family: var(--font-mono); font-size: 11px; color: var(--accent2); text-decoration: none;
+    margin-left: auto; align-self: center; flex-shrink: 0;
+    border: 0.5px solid rgba(147,197,253,0.25); padding: 4px 10px; border-radius: 4px;
     transition: border-color 0.2s;
   }
-  .cert-link:hover { border-color: rgba(100,245,200,0.6); }
+  .cert-link:hover { border-color: rgba(147,197,253,0.6); }
 
-  /* --- ABOUT --- */
   .about-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: start; }
   .about-left { position: sticky; top: 8rem; }
-  .about-name {
-    font-family: var(--font-head);
-    font-size: 2.5rem;
-    font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 0.5rem;
-  }
-  .about-title {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--accent);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-  }
+  .about-name { font-family: var(--font-head); font-size: 2.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 0.5rem; }
+  .about-title { font-family: var(--font-mono); font-size: 12px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem; }
   .about-social { display: flex; flex-direction: column; gap: 8px; }
   .social-link {
     display: flex; align-items: center; gap: 10px;
-    font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
+    font-family: var(--font-mono); font-size: 12px; color: var(--muted);
+    text-decoration: none; transition: color 0.2s;
   }
   .social-link:hover { color: var(--text); }
-  .social-icon { width: 28px; color: var(--accent); }
-  .about-text { font-size: 17px; color: rgba(240,237,230,0.75); line-height: 1.85; }
+  .social-icon { width: 28px; color: var(--accent); font-style: normal; }
+  .about-text { font-size: 17px; color: rgba(232,237,245,0.7); line-height: 1.85; }
   .about-text p + p { margin-top: 1.25rem; }
 
-  /* --- CONTACT --- */
   #contact { background: var(--bg2); border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); }
-  .contact-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: start;
-  }
+  .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
   .contact-links { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
   .contact-item {
     display: flex; align-items: center; gap: 1rem;
-    background: var(--bg3);
-    border: 0.5px solid var(--border);
-    border-radius: 10px;
-    padding: 1rem 1.25rem;
-    text-decoration: none;
-    transition: border-color 0.2s;
+    background: var(--bg3); border: 0.5px solid var(--border); border-radius: 10px;
+    padding: 1rem 1.25rem; text-decoration: none; transition: border-color 0.2s;
   }
   .contact-item:hover { border-color: var(--border-hover); }
   .contact-icon {
-    width: 36px; height: 36px;
-    background: rgba(200,245,100,0.06);
-    border-radius: 8px;
+    width: 36px; height: 36px; background: rgba(91,156,246,0.08); border-radius: 8px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 16px;
-    flex-shrink: 0;
+    font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--accent); flex-shrink: 0;
   }
   .contact-label { font-family: var(--font-mono); font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
   .contact-value { font-size: 14px; color: var(--text); margin-top: 2px; }
 
-  /* FORM */
   .contact-form { display: flex; flex-direction: column; gap: 1rem; }
   .form-group input, .form-group textarea {
-    width: 100%;
-    background: var(--bg3);
-    border: 0.5px solid var(--border);
-    border-radius: 8px;
-    color: var(--text);
-    font-family: var(--font-body);
-    font-size: 15px;
-    padding: 0.875rem 1rem;
-    outline: none;
-    transition: border-color 0.2s;
-    resize: none;
+    width: 100%; background: var(--bg3); border: 0.5px solid var(--border); border-radius: 8px;
+    color: var(--text); font-family: var(--font-body); font-size: 15px;
+    padding: 0.875rem 1rem; outline: none; transition: border-color 0.2s; resize: none;
   }
-  .form-group input:focus, .form-group textarea:focus { border-color: rgba(200,245,100,0.4); }
+  .form-group input:focus, .form-group textarea:focus { border-color: rgba(91,156,246,0.4); }
   .form-group input::placeholder, .form-group textarea::placeholder { color: var(--muted); }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   .btn-send {
-    font-family: var(--font-head);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    background: var(--accent);
-    color: #0d0d0d;
-    border: none;
-    padding: 1rem 2rem;
-    border-radius: 4px;
-    cursor: pointer;
-    align-self: flex-start;
-    transition: opacity 0.2s, transform 0.2s;
+    font-family: var(--font-head); font-size: 13px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase; background: var(--accent);
+    color: #0a0e14; border: none; padding: 1rem 2rem; border-radius: 4px;
+    cursor: pointer; align-self: flex-start; transition: opacity 0.2s, transform 0.2s;
   }
   .btn-send:hover { opacity: 0.88; transform: translateY(-1px); }
 
-  /* --- FOOTER --- */
   footer {
-    padding: 2rem 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-top: 0.5px solid var(--border);
+    padding: 2rem 3rem; display: flex; align-items: center;
+    justify-content: space-between; border-top: 0.5px solid var(--border);
   }
   .footer-copy { font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
-  .footer-back {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
+  .footer-back { font-family: var(--font-mono); font-size: 11px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
   .footer-back:hover { color: var(--text); }
 
-  /* --- RESPONSIVE --- */
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
     .container { padding: 0 1.5rem; }
     section { padding: 5rem 0; }
-    .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .about-layout { grid-template-columns: 1fr; gap: 2rem; }
     .about-left { position: static; }
     .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -508,51 +299,28 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div class="bg-deco"></div>
+  <div class="bg-deco2"></div>
   <div class="container">
-    <div class="hero-grid">
-      <div>
-        <div class="hero-tag">disponível para oportunidades</div>
-        <h1>Bernardo<br><em>Aguiar</em></h1>
-        <p class="hero-desc">
-          Desenvolvedor Python com foco em aplicações web e análise de dados. Construo APIs RESTful com Django, automatizo processos e aplico ciência de dados para resolver problemas reais.
-        </p>
-        <div class="hero-ctas">
-          <a href="#projects" class="btn-primary">Ver projetos</a>
-          <a href="#contact" class="btn-outline">Entrar em contato</a>
-        </div>
+    <div class="hero-content">
+      <div class="hero-tag">disponível para oportunidades</div>
+      <h1>Bernardo<br><em>Aguiar</em></h1>
+      <p class="hero-desc">
+        Desenvolvedor Python com foco em aplicações web e análise de dados. Construo APIs RESTful com Django, processo imagens, renderizo em 3D no browser e automatizo o que for possível.
+      </p>
+      <div class="hero-stack">
+        <span class="hero-chip">Python</span>
+        <span class="hero-chip">Django</span>
+        <span class="hero-chip">JavaScript</span>
+        <span class="hero-chip">Pandas</span>
+        <span class="hero-chip">Three.js</span>
+        <span class="hero-chip">SQL</span>
+        <span class="hero-chip">Git</span>
       </div>
-      <div class="hero-right">
-        <div class="hero-stat-card">
-          <div class="stat-icon">🎓</div>
-          <div>
-            <div class="stat-label">Base técnica</div>
-            <div class="stat-value">Harvard CS50 + IBM Data Science</div>
-          </div>
-        </div>
-        <div class="hero-stat-card">
-          <div class="stat-icon">🐍</div>
-          <div>
-            <div class="stat-label">Stack principal</div>
-            <div class="stat-value">Python · Django · Pandas · SQL</div>
-          </div>
-        </div>
-        <div class="hero-stat-card">
-          <div class="stat-icon">🔬</div>
-          <div>
-            <div class="stat-label">Foco</div>
-            <div class="stat-value">Web · Dados · Automação · IA</div>
-          </div>
-        </div>
-        <div class="hero-stat-card">
-          <div class="stat-icon">📍</div>
-          <div>
-            <div class="stat-label">Localização</div>
-            <div class="stat-value">Brasil · Aberto a remoto</div>
-          </div>
-        </div>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn-primary">Ver projetos</a>
+        <a href="#contact" class="btn-outline">Entrar em contato</a>
       </div>
     </div>
   </div>
@@ -560,18 +328,17 @@
 
 <hr class="divider">
 
-<!-- PROJECTS -->
 <section id="projects">
   <div class="container">
     <p class="section-label">// 01 · portfólio</p>
     <h2>Projetos</h2>
-    <p class="section-sub">Aplicações que provam capacidade de entrega — da concepção ao deploy.</p>
+    <p class="section-sub">Projetos finais dos cursos CS50 — construídos do zero, com código real.</p>
 
     <div class="projects-grid">
 
       <div class="project-card featured">
         <div class="project-header">
-          <div class="project-icon">🌐</div>
+          <div class="project-icon">👗</div>
           <div class="project-links">
             <a href="https://github.com/bzn539" target="_blank" class="proj-link" title="GitHub">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -579,21 +346,30 @@
           </div>
         </div>
         <div>
-          <div class="project-title">CS50W Final Project</div>
-          <p class="project-desc">Aplicação web full-stack construída com Django — resolve um problema real de negócio com autenticação, CRUD completo e API RESTful.</p>
+          <div class="project-subtitle">CS50W · Capstone Project</div>
+          <div class="project-title">Virtual Wardrobe + Gym Outfit Planner</div>
+          <p class="project-desc">Aplicação Django para organizar roupas e planejar looks de academia — combina remoção de fundo automática, visualização 3D em tempo real e um calendário mensal de outfits.</p>
+        </div>
+        <div class="project-highlights">
+          <div class="highlight-item">Upload de roupas com remoção de fundo automática via Pillow + rembg</div>
+          <div class="highlight-item">Viewer 3D com Three.js: aplica a foto como textura em manequim, ajusta escala/offset e salva no banco</div>
+          <div class="highlight-item">Calendário mensal com sorteio automático, embaralhamento e limpeza por dia</div>
+          <div class="highlight-item">Autenticação completa com isolamento de dados por usuário</div>
         </div>
         <div class="tech-badges">
           <span class="badge accent">Python</span>
           <span class="badge accent">Django</span>
+          <span class="badge accent">Three.js</span>
           <span class="badge">JavaScript</span>
+          <span class="badge">Pillow</span>
+          <span class="badge">rembg</span>
           <span class="badge">SQLite</span>
-          <span class="badge">HTML/CSS</span>
         </div>
       </div>
 
       <div class="project-card featured">
         <div class="project-header">
-          <div class="project-icon">🚀</div>
+          <div class="project-icon">🎲</div>
           <div class="project-links">
             <a href="https://github.com/bzn539" target="_blank" class="proj-link" title="GitHub">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -601,78 +377,22 @@
           </div>
         </div>
         <div>
-          <div class="project-title">IBM Data Science Capstone — SpaceX</div>
-          <p class="project-desc">Análise preditiva de lançamentos da SpaceX: coleta de dados via API e web scraping, EDA, mapas interativos com Folium e modelo de classificação com Scikit-learn.</p>
+          <div class="project-subtitle">CS50P · Final Project</div>
+          <div class="project-title">The Draw</div>
+          <p class="project-desc">Programa de sorteio para terminal — sorteia nomes de uma lista inserida manualmente ou carregada de arquivo, com animação roulette em tempo real e dois modos de sorteio.</p>
         </div>
-        <div class="tech-badges">
-          <span class="badge accent">Python</span>
-          <span class="badge accent">Scikit-learn</span>
-          <span class="badge">Pandas</span>
-          <span class="badge">Plotly</span>
-          <span class="badge">Folium</span>
-          <span class="badge">REST API</span>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-header">
-          <div class="project-icon">🧩</div>
-          <div class="project-links">
-            <a href="https://github.com/bzn539" target="_blank" class="proj-link" title="GitHub">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-            </a>
-          </div>
-        </div>
-        <div>
-          <div class="project-title">CS50P Final Project</div>
-          <p class="project-desc">Projeto Python puro: lógica robusta, tratamento de erros, testes automatizados com pytest e código limpo seguindo PEP 8.</p>
+        <div class="project-highlights">
+          <div class="highlight-item">Animação com sys.stdout: nomes trocam na mesma linha antes de revelar o sorteado</div>
+          <div class="highlight-item">Dois modos: sorteio único e múltiplo, com prevenção de duplicatas e sessão reiniciável</div>
+          <div class="highlight-item">Validação de input, leitura/escrita de arquivo e testes com pytest</div>
+          <div class="highlight-item">Design modular com separação clara de lógica usando classes</div>
         </div>
         <div class="tech-badges">
           <span class="badge accent">Python</span>
           <span class="badge">pytest</span>
           <span class="badge">CLI</span>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-header">
-          <div class="project-icon">🤖</div>
-          <div class="project-links">
-            <a href="https://github.com/bzn539" target="_blank" class="proj-link" title="GitHub">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-            </a>
-          </div>
-        </div>
-        <div>
-          <div class="project-title">CS50 AI — Projeto Inteligente</div>
-          <p class="project-desc">Implementação de algoritmos de IA clássicos e modernos: busca, satisfação de restrições, aprendizado de máquina e redes neurais aplicados a problemas concretos.</p>
-        </div>
-        <div class="tech-badges">
-          <span class="badge accent">Python</span>
-          <span class="badge">TensorFlow</span>
-          <span class="badge">Search Algorithms</span>
-          <span class="badge">NLP</span>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-header">
-          <div class="project-icon">⚡</div>
-          <div class="project-links">
-            <a href="https://github.com/bzn539" target="_blank" class="proj-link" title="GitHub">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-            </a>
-          </div>
-        </div>
-        <div>
-          <div class="project-title">Scripts de Automação</div>
-          <p class="project-desc">Scripts Python para automação de tarefas repetitivas: manipulação de arquivos, extração de dados, automação de planilhas e pipelines de processamento.</p>
-        </div>
-        <div class="tech-badges">
-          <span class="badge accent">Python</span>
-          <span class="badge">openpyxl</span>
-          <span class="badge">BeautifulSoup</span>
-          <span class="badge">requests</span>
+          <span class="badge">ANSI colors</span>
+          <span class="badge">File I/O</span>
         </div>
       </div>
 
@@ -682,61 +402,52 @@
 
 <hr class="divider">
 
-<!-- SKILLS -->
 <section id="skills">
   <div class="container">
     <p class="section-label">// 02 · stack</p>
     <h2>Habilidades técnicas</h2>
-    <p class="section-sub">Só o que já usei em código real — sem barras de progresso subjetivas.</p>
+    <p class="section-sub">Só o que já usei em código real.</p>
 
     <div class="skills-grid">
       <div class="skill-group">
         <div class="skill-group-title">Linguagens</div>
         <div class="skill-list">
-          <div class="skill-item">Python <span class="skill-level prof">Proficiente</span></div>
-          <div class="skill-item">SQL <span class="skill-level prof">Proficiente</span></div>
-          <div class="skill-item">JavaScript <span class="skill-level fam">Familiar</span></div>
-          <div class="skill-item">HTML / CSS <span class="skill-level prof">Proficiente</span></div>
+          <div class="skill-item">Python</div>
+          <div class="skill-item">SQL</div>
+          <div class="skill-item">JavaScript</div>
+          <div class="skill-item">HTML / CSS</div>
         </div>
       </div>
 
       <div class="skill-group">
         <div class="skill-group-title">Frameworks & Web</div>
         <div class="skill-list">
-          <div class="skill-item">Django <span class="skill-level prof">Proficiente</span></div>
-          <div class="skill-item">Flask <span class="skill-level fam">Familiar</span></div>
-          <div class="skill-item">REST APIs <span class="skill-level prof">Proficiente</span></div>
-          <div class="skill-item">React <span class="skill-level fam">Familiar</span></div>
+          <div class="skill-item">Django</div>
+          <div class="skill-item">Flask</div>
+          <div class="skill-item">REST APIs</div>
+          <div class="skill-item">Three.js</div>
+          <div class="skill-item">React</div>
         </div>
       </div>
 
       <div class="skill-group">
         <div class="skill-group-title">Dados & IA</div>
         <div class="skill-list">
-          <div class="skill-item">Pandas <span class="skill-level prof">Proficiente</span></div>
-          <div class="skill-item">NumPy <span class="skill-level prof">Proficiente</span></div>
-          <div class="skill-item">Scikit-learn <span class="skill-level prof">Proficiente</span></div>
-          <div class="skill-item">Matplotlib / Plotly <span class="skill-level prof">Proficiente</span></div>
-          <div class="skill-item">Fundamentos de LLMs <span class="skill-level fam">Familiar</span></div>
+          <div class="skill-item">Pandas</div>
+          <div class="skill-item">NumPy</div>
+          <div class="skill-item">Matplotlib</div>
+          <div class="skill-item">Fundamentos de LLMs</div>
+          <div class="skill-item">Engenharia de Prompt</div>
         </div>
       </div>
 
       <div class="skill-group">
         <div class="skill-group-title">Ferramentas</div>
         <div class="skill-list">
-          <div class="skill-item">Git / GitHub <span class="skill-level prof">Proficiente</span></div>
-          <div class="skill-item">SQLite / PostgreSQL <span class="skill-level prof">Proficiente</span></div>
-          <div class="skill-item">VS Code <span class="skill-level prof">Proficiente</span></div>
-          <div class="skill-item">Linux / CLI <span class="skill-level fam">Familiar</span></div>
-        </div>
-      </div>
-
-      <div class="skill-group">
-        <div class="skill-group-title">Prática contínua</div>
-        <div class="skill-list">
-          <div class="skill-item">freeCodeCamp JS <span class="skill-level fam">50+ exercícios</span></div>
-          <div class="skill-item">Exercism Python <span class="skill-level fam">Ativo</span></div>
-          <div class="skill-item">Prompt Engineering <span class="skill-level fam">Familiar</span></div>
+          <div class="skill-item">Git / GitHub</div>
+          <div class="skill-item">SQLite / PostgreSQL</div>
+          <div class="skill-item">VS Code</div>
+          <div class="skill-item">Pillow / rembg</div>
         </div>
       </div>
     </div>
@@ -745,22 +456,13 @@
 
 <hr class="divider">
 
-<!-- CERTS -->
 <section id="certs">
   <div class="container">
     <p class="section-label">// 03 · formação</p>
     <h2>Certificações</h2>
-    <p class="section-sub">Formação técnica autodidata com credenciais verificáveis de instituições reconhecidas.</p>
+    <p class="section-sub">Formação técnica autodidata com credenciais de instituições reconhecidas.</p>
 
     <div class="certs-list">
-      <div class="cert-card">
-        <div class="cert-institution">IBM</div>
-        <div>
-          <div class="cert-name">IBM Data Science Professional Certificate</div>
-          <div class="cert-detail">Coursera · 9 cursos · Concluído — Python, SQL, Pandas, Scikit-learn, Visualização, Machine Learning, Capstone</div>
-        </div>
-        <a href="https://www.coursera.org" target="_blank" class="cert-link">verificar →</a>
-      </div>
 
       <div class="cert-card">
         <div class="cert-institution">Harvard</div>
@@ -784,9 +486,17 @@
         <div class="cert-institution">Harvard</div>
         <div>
           <div class="cert-name">CS50's Introduction to Artificial Intelligence with Python</div>
-          <div class="cert-detail">edX / Harvard University · Search, ML, redes neurais, NLP</div>
+          <div class="cert-detail">edX / Harvard University · Em andamento — Search, ML, redes neurais, NLP</div>
         </div>
-        <a href="https://cs50.harvard.edu/ai/" target="_blank" class="cert-link">verificar →</a>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-institution">IBM</div>
+        <div>
+          <div class="cert-name">Python for Data Science, AI & Development</div>
+          <div class="cert-detail">Coursera / IBM · Python aplicado a dados, APIs, Pandas, NumPy, visualização</div>
+        </div>
+        <a href="https://www.coursera.org" target="_blank" class="cert-link">verificar →</a>
       </div>
 
       <div class="cert-card">
@@ -803,29 +513,25 @@
 
 <hr class="divider">
 
-<!-- ABOUT -->
 <section id="about">
   <div class="container">
     <div class="about-layout">
       <div class="about-left">
         <p class="section-label">// 04 · quem sou</p>
-        <div class="about-name">Bernardo<br>Moraes<br>de Aguiar</div>
+        <div class="about-name">Bernardo<br>Aguiar</div>
         <div class="about-title">Dev Python · Web & Dados</div>
         <div class="about-social">
-          <a href="mailto:bemoraesaguiar@gmail.com" class="social-link">
-            <span class="social-icon">✉</span>bemoraesaguiar@gmail.com
-          </a>
           <a href="https://github.com/bzn539" target="_blank" class="social-link">
             <span class="social-icon">⌥</span>github.com/bzn539
           </a>
           <a href="https://www.linkedin.com/in/bernardo-moraes-de-aguiar-33b1153b6/" target="_blank" class="social-link">
-            <span class="social-icon">in</span>LinkedIn
+            <em class="social-icon" style="font-family: var(--font-mono); font-size: 13px; font-weight: 600; font-style: normal;">in</em>LinkedIn
           </a>
         </div>
       </div>
       <div class="about-text">
         <p>A transição para tecnologia não foi um salto no escuro — foi uma escolha deliberada depois de perceber que o que mais gostava de fazer em qualquer área era resolver problemas com lógica e construir ferramentas que facilitam o trabalho de outras pessoas.</p>
-        <p>Comecei pelo CS50, que é tão rigoroso quanto qualquer disciplina de faculdade, e fui fundo: Python, web com Django, inteligência artificial e uma certificação profissional completa de Data Science pela IBM. Não segui tutoriais passivamente — construí projetos, bati cabeça e entendi o porquê das coisas.</p>
+        <p>Comecei pelo CS50, que é tão rigoroso quanto qualquer disciplina de faculdade, e fui fundo: Python, web com Django, inteligência artificial e um curso de Data Science pela IBM. Não segui tutoriais passivamente — construí projetos, bati cabeça e entendi o porquê das coisas.</p>
         <p>Hoje me interessa especialmente a intersecção entre web e dados: aplicações que não só funcionam, mas que produzem insights. Estou aberto a oportunidades como desenvolvedor júnior, analista de dados ou freelance — o que importa é um ambiente onde dá pra crescer rápido e contribuir desde o início.</p>
       </div>
     </div>
@@ -834,7 +540,6 @@
 
 <hr class="divider">
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="container">
     <div class="contact-inner">
@@ -843,23 +548,16 @@
         <h2>Vamos conversar</h2>
         <p class="section-sub">Aberto a oportunidades de emprego, freela ou colaboração em projetos.</p>
         <div class="contact-links">
-          <a href="mailto:bemoraesaguiar@gmail.com" class="contact-item">
-            <div class="contact-icon">✉</div>
-            <div>
-              <div class="contact-label">Email</div>
-              <div class="contact-value">bemoraesaguiar@gmail.com</div>
-            </div>
-          </a>
           <a href="https://www.linkedin.com/in/bernardo-moraes-de-aguiar-33b1153b6/" target="_blank" class="contact-item">
-            <div class="contact-icon" style="font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--accent);">in</div>
+            <div class="contact-icon">in</div>
             <div>
               <div class="contact-label">LinkedIn</div>
-              <div class="contact-value">Bernardo Moraes de Aguiar</div>
+              <div class="contact-value">Bernardo Aguiar</div>
             </div>
           </a>
           <a href="https://github.com/bzn539" target="_blank" class="contact-item">
             <div class="contact-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="color: var(--accent)"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
             </div>
             <div>
               <div class="contact-label">GitHub</div>
@@ -872,19 +570,11 @@
       <div>
         <form class="contact-form" onsubmit="handleSubmit(event)">
           <div class="form-row">
-            <div class="form-group">
-              <input type="text" placeholder="Nome" required>
-            </div>
-            <div class="form-group">
-              <input type="email" placeholder="Email" required>
-            </div>
+            <div class="form-group"><input type="text" placeholder="Nome" required></div>
+            <div class="form-group"><input type="email" placeholder="Email" required></div>
           </div>
-          <div class="form-group">
-            <input type="text" placeholder="Assunto">
-          </div>
-          <div class="form-group">
-            <textarea rows="5" placeholder="Mensagem..." required></textarea>
-          </div>
+          <div class="form-group"><input type="text" placeholder="Assunto"></div>
+          <div class="form-group"><textarea rows="5" placeholder="Mensagem..." required></textarea></div>
           <button type="submit" class="btn-send">Enviar mensagem</button>
         </form>
       </div>
@@ -893,7 +583,7 @@
 </section>
 
 <footer>
-  <span class="footer-copy">© 2025 Bernardo Moraes de Aguiar</span>
+  <span class="footer-copy">© 2025 Bernardo Aguiar</span>
   <a href="#hero" class="footer-back">↑ voltar ao topo</a>
 </footer>
 
@@ -902,7 +592,7 @@ function handleSubmit(e) {
   e.preventDefault();
   const btn = e.target.querySelector('.btn-send');
   btn.textContent = 'Enviado!';
-  btn.style.background = '#64f5c8';
+  btn.style.background = '#93c5fd';
   setTimeout(() => {
     btn.textContent = 'Enviar mensagem';
     btn.style.background = '';
